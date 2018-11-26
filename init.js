@@ -17,7 +17,7 @@ print('Topic: ', topic);
 
 function getInfo() {
     return JSON.stringify({
-        temp: tempsensor.read_temp().toFixed(2)
+        temp: tempsensor.read_temp()
     });
 };
 
@@ -28,11 +28,11 @@ function publishData() {
         print(appName, 'Not connected');
     }
 }
+
 Timer
     .set(60000, true, function () {
-        print("read temp push data to server",getInfo());
-        //publishData();
-
+        //print("read temp push data to server",tempsensor.read_temp());
+       publishData();
     },null);
 
 
